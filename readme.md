@@ -1,10 +1,10 @@
-# K8s: Vagrant, Ansible Setup.
+# K8s: Vagrant, Ansible Setup
 
-## overview
+## Overview
 
 ### pre-requisites
 
-* install VirtualBox
+* Install VirtualBox
 
 ```sh
 # add /etc/apt.sources.list
@@ -19,12 +19,12 @@ sudo apt-get update
 sudo apt-get install virtualbox-6.1
 ```
 
-* install [vagrant](https://www.vagrantup.com/docs/installation)
-* install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu)
+* Install [Vagrant](https://www.vagrantup.com/docs/installation)
+* Install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu)
 
-* install like this: `sudo apt install -y libarchive-tools`. 'bsdtar' required, but not supported in Ubuntu 19+.
+> install `libarchive-tools` to get tool `bsdtar`, which is required but not supported in Ubuntu 19+: `sudo apt install -y libarchive-tools`.
 
-### deploy
+### Deploy
 
 In the rep folder, run: `vagrant up`
 
@@ -35,16 +35,16 @@ This will do the following:
 3. create each `worker-N` ubuntu VM Node.
 4. install docker, kubernetes, kubeadm and join each worker to `k8s-control` Node.
 
-Once it's all up, check for errors, then check with commands: `vagrant status`
+### Check
 
-output:
+Once it's all up, check for errors, then check with commands: `vagrant status` and you should see:
 
 ```sh
 Current machine states:
 
 k8s-control                running (virtualbox)
-node-1                    running (virtualbox)
-node-2                    running (virtualbox)
+worker-1                    running (virtualbox)
+worker-2                    running (virtualbox)
 
 This environment represents multiple VMs. The VMs are all listed
 above with their current state. For more information about a specific
@@ -62,6 +62,12 @@ k8s-control   Ready    control-plane,master   87m   v1.23.5
 worker-1      Ready    <none>                 83m   v1.23.5
 worker-2      Ready    <none>                 80m   v1.23.5
 ```
+
+### KUBECONFIG
+
+Access your cluster via `kubectl` from the `k8s-control` Node.
+
+(TODO) - access the cluster from your host computer using the `~/.kube/config` file from `k8s-control`.
 
 ### troubleshooting
 
