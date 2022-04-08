@@ -2,9 +2,15 @@
 
 ## Overview
 
-### pre-requisites
+This repo is an easy way to get a 3-Node Kubernetes cluster stood up using Vagrant, Ansible and Kubeadm.
 
-* Install VirtualBox
+A simple `vagrant up` once pre-requisites are installed, will get you all the way to a fully running cluster and `kubectl` ready to go.
+
+### Pre-requisites
+
+Please get the following installed first:
+
+* VirtualBox
 
 ```sh
 # add /etc/apt.sources.list
@@ -19,8 +25,8 @@ sudo apt-get update
 sudo apt-get install virtualbox-6.1
 ```
 
-* Install [Vagrant](https://www.vagrantup.com/docs/installation)
-* Install [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu)
+* [Vagrant](https://www.vagrantup.com/docs/installation)
+* [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-ubuntu)
 
 > install `libarchive-tools` to get tool `bsdtar`, which is required but not supported in Ubuntu 19+: `sudo apt install -y libarchive-tools`.
 
